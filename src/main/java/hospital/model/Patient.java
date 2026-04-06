@@ -1,21 +1,25 @@
 package hospital.model;
 
 import hospital.interfaces.Treatable;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Patient extends Person implements Treatable {
 
     private static final long serialVersionUID = 5L;
+    private static final String DEFAULT_DIAGNOSIS = "Не установлен";
+    private static final boolean DEFAULT_HOSPITALIZED = false;
 
     private String diagnosis;
-
     private boolean hospitalized;
-
     private int roomNumber;
 
     public Patient(String name, int age, String department, int roomNumber) {
         super(name, age, department);
-        this.diagnosis = "Не установлен";
-        this.hospitalized = false;
+        this.diagnosis = DEFAULT_DIAGNOSIS;
+        this.hospitalized = DEFAULT_HOSPITALIZED;
         this.roomNumber = roomNumber;
     }
 
@@ -51,26 +55,5 @@ public class Patient extends Person implements Treatable {
     public void hospitalize() {
         this.hospitalized = true;
         System.out.println("Пациент " + name + " госпитализирован в отделение: " + department);
-    }
-
-    public String getDiagnosis() {
-        return diagnosis;
-    }
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
-    }
-
-    public boolean isHospitalized() {
-        return hospitalized;
-    }
-    public void setHospitalized(boolean hospitalized) {
-        this.hospitalized = hospitalized;
-    }
-
-    public int getRoomNumber() {
-        return roomNumber;
-    }
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
     }
 }

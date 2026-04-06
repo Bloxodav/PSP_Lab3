@@ -1,10 +1,16 @@
 package hospital.model;
 
 import hospital.interfaces.Payable;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Nurse extends MedicalPerson implements Payable {
 
     private static final long serialVersionUID = 4L;
+    private static final double PERCENT_DIVISOR = 100.0;
+
     private String shift;
     private int experience;
 
@@ -41,22 +47,8 @@ public class Nurse extends MedicalPerson implements Payable {
     @Override
     public void raiseSalary(double percent) {
         double oldSalary = salary;
-        salary += salary * (percent / 100.0);
+        salary += salary * (percent / PERCENT_DIVISOR);
         System.out.println("Зарплата медсестры " + name + " повышена с "
                 + oldSalary + " до " + salary + " руб. (+" + percent + "%)");
-    }
-
-    public String getShift() {
-        return shift;
-    }
-    public void setShift(String shift) {
-        this.shift = shift;
-    }
-
-    public int getExperience() {
-        return experience;
-    }
-    public void setExperience(int experience) {
-        this.experience = experience;
     }
 }

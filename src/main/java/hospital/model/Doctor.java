@@ -1,10 +1,15 @@
 package hospital.model;
 
 import hospital.interfaces.Payable;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Doctor extends MedicalPerson implements Payable {
 
     private static final long serialVersionUID = 3L;
+    private static final double PERCENT_DIVISOR = 100.0;
 
     private String category;
     private int patientCount;
@@ -20,6 +25,7 @@ public class Doctor extends MedicalPerson implements Payable {
     public String getRole() {
         return "Врач";
     }
+
     @Override
     public void displayInfo() {
         System.out.println("ВРАЧ");
@@ -40,22 +46,8 @@ public class Doctor extends MedicalPerson implements Payable {
     @Override
     public void raiseSalary(double percent) {
         double oldSalary = salary;
-        salary += salary * (percent / 100.0);
+        salary += salary * (percent / PERCENT_DIVISOR);
         System.out.println("Зарплата врача " + name + " повышена с "
                 + oldSalary + " до " + salary + " руб. (+" + percent + "%)");
-    }
-
-    public String getCategory() {
-        return category;
-    }
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public int getPatientCount() {
-        return patientCount;
-    }
-    public void setPatientCount(int patientCount) {
-        this.patientCount = patientCount;
     }
 }

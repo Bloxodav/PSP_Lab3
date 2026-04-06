@@ -6,24 +6,29 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Координаты проекта -->
     <groupId>hospital</groupId>
-    <artifactId>hospital-system</artifactId>
+    <artifactId>hospital-lab3</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
 
     <properties>
-        <!-- Версия Java -->
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Главный класс для запуска -->
-        <mainClass>hospital.Main</mainClass>
     </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
-            <!-- Плагин для создания исполняемого JAR со всеми зависимостями -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -31,10 +36,9 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>${mainClass}</mainClass>
+                            <mainClass>hospital.Main</mainClass>
                         </manifest>
                     </archive>
-                    <finalName>hospital-system</finalName>
                 </configuration>
             </plugin>
         </plugins>

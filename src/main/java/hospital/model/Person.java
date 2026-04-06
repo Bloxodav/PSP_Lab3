@@ -1,7 +1,14 @@
 package hospital.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public abstract class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -10,37 +17,9 @@ public abstract class Person implements Serializable {
     protected int age;
     protected String department;
 
-    public Person(String name, int age, String department) {
-        this.name = name;
-        this.age = age;
-        this.department = department;
-    }
-
     public abstract String getRole();
 
     public abstract void displayInfo();
-
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-    public void setDepartment(String department) {
-        this.department = department;
-    }
 
     @Override
     public String toString() {
